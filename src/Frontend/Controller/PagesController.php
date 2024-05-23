@@ -2,13 +2,15 @@
 
 namespace App\Frontend\Controller;
 
+use App\Repository\PagesRepository;
+
 class PagesController extends AbstractController
 {
+    public function __construct(private PagesRepository $pagesRepository) {}
+
     public function showPage($pageKey)
     {
-        // TODO: fetch the actual page!!!
-        // echo "PagesController is showing the page: {$pageKey}\n";
-
-        $this->render('pages/showPage', []);
+        $page = $this->pagesRepository->fetchBySlug($pageKey);
+        $this->render('pages/showPage', ['page' => $page]);
     }
 }

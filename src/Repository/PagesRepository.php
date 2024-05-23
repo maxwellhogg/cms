@@ -7,10 +7,7 @@ use App\Model\PageModel;
 
 class PagesRepository
 {
-    public function __construct(private PDO $pdo)
-    {
-
-    }
+    public function __construct(private PDO $pdo) {}
 
     public function fetchBySlug(string $slug): ?PageModel
     {
